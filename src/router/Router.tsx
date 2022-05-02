@@ -7,6 +7,10 @@ import {createStackNavigator} from '@react-navigation/stack';
 import React, {useEffect} from 'react';
 import {BackHandler, SafeAreaView, View} from 'react-native';
 
+import Home from '../page/Home';
+import Test from '../page/Test';
+import {showToastMessage} from '../util/Util';
+
 let count = 0; //  종료카운트
 const Stack = createStackNavigator();
 
@@ -17,8 +21,8 @@ export default function Router() {
     };
   };
 
-  const withScrollView = WrappedComponent => {
-    return props => {
+  const withScrollView = (WrappedComponent: any) => {
+    return (props: any) => {
       const isFocus = useIsFocused();
       const navigation = useNavigation();
 
@@ -81,7 +85,11 @@ export default function Router() {
 
 const RouterSetting = [
   {
-    name: 'BlindList',
-    component: BlindList,
+    name: 'Home',
+    component: Home,
+  },
+  {
+    name: 'Test',
+    component: Test,
   },
 ];

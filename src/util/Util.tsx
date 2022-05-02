@@ -1,7 +1,17 @@
 import {useNavigation} from '@react-navigation/native';
 import Toast from 'react-native-toast-message';
 
-interface showPushToastMessage {}
+interface showPushToastMessage {
+  remoteMessage: {
+    notification: {
+      title: string;
+      body: string;
+    };
+  };
+  onPress: Function;
+  props: Object;
+  onShow: Function;
+}
 
 export const showToastMessage = (text: string, time = 3000) => {
   Toast.show({
@@ -22,7 +32,7 @@ export const showPushToastMessage = ({
   props,
   onShow,
   ...rest
-}: object) => {
+}: showPushToastMessage) => {
   Toast.show({
     type: 'pushToast',
     position: 'top',
