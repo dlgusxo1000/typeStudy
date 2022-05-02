@@ -8,6 +8,7 @@ import React, {useEffect} from 'react';
 import {BackHandler, SafeAreaView, View} from 'react-native';
 
 import Home from '../page/Home';
+import Login from '../page/Login';
 import Test from '../page/Test';
 import {showToastMessage} from '../util/Util';
 
@@ -29,7 +30,6 @@ export default function Router() {
       const onBackPress = async () => {
         if (count < 1) {
           count++;
-          //ToastAndroid.show('한번더 뒤로가기를 누르면 앱이 종료됩니다.', ToastAndroid.SHORT);
           showToastMessage('뒤로가기를 한번 더 누르면 앱이 종료됩니다.', 1500);
         } else {
           BackHandler.exitApp();
@@ -65,7 +65,7 @@ export default function Router() {
   };
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName={'Home'}>
+      <Stack.Navigator initialRouteName={'Login'}>
         {RouterSetting.map((item, index) => (
           <Stack.Screen
             name={item.name}
@@ -84,6 +84,10 @@ export default function Router() {
 }
 
 const RouterSetting = [
+  {
+    name: 'Login',
+    component: Login,
+  },
   {
     name: 'Home',
     component: Home,
